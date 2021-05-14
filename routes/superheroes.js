@@ -23,6 +23,13 @@ router.get('/:id', (req, res) => {
     });
 });
 
+router.put('/:id', (req, res) => {
+    SuperheroeModel.findByIdAndUpdate(req.params.id, req.body, (err, data) => {
+        if (err) return res.send({ error: err });
+        res.send(data);
+    });
+});
+
 router.get('/search/:text', (req, res) => {
     SuperheroeModel.find({ name: { $regex: `.*${req.params.text}.*` } }, (err, data) => {
         if (err || !data) {
