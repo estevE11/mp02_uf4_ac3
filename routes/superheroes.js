@@ -14,7 +14,17 @@ router.get('/', (req, res) => {
 });
 
 router.get('/:id', (req, res) => {
-    SuperheroeModel.findById(req.query.id, (err, data) => {
+    SuperheroeModel.findById(req.params.id, (err, data) => {
+        if (err || !data) {
+            res.send({ error: err });
+            return;
+        }
+        res.send(data);
+    });
+});
+
+router.get('/search/:text', (req, res) => {
+    SuperheroeModel.find({ name: { $regex: `.*${req.params.text}.*` } }, (err, data) => {
         if (err || !data) {
             res.send({ error: err });
             return;
