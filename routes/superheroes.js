@@ -30,6 +30,13 @@ router.put('/:id', (req, res) => {
     });
 });
 
+router.delete('/:id', (req, res) => {
+    SuperheroeModel.findByIdAndDelete(req.params.id, (err, data) => {
+        if (err) return res.send({ error: err });
+        res.send("Item deleted");
+    });
+});
+
 router.get('/search/:text', (req, res) => {
     SuperheroeModel.find({ name: { $regex: `.*${req.params.text}.*` } }, (err, data) => {
         if (err || !data) {
