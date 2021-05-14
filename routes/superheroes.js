@@ -33,6 +33,16 @@ router.get('/search/:text', (req, res) => {
     });
 });
 
+router.get('/sort/:property', (req, res) => {
+    SuperheroeModel.find({}).sort(req.params.property).exec((err, data) => {
+        if (err || !data) {
+            res.send({ error: err });
+            return;
+        }
+        res.send(data);
+    });
+});
+
 router.post('/', (req, res) => {
     const superheroe = new SuperheroeModel(req.body);
     superheroe.save((err, data) => {
