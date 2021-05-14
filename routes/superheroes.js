@@ -4,7 +4,13 @@ const router = express.Router();
 const SuperheroeModel = require('./../models/SuperheroeModel');
 
 router.get('/', (req, res) => {
-    res.send({message: 'callaputa'});
+    SuperheroeModel.find({}, (err, docs) => {
+        if (err) {
+            res.semd({ error: res });
+            return;
+        }
+        res.send(docs);
+    });
 });
 
 router.post('/', (req, res) => {
