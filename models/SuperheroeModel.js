@@ -57,6 +57,12 @@ const schema = new mongoose.Schema({
         min: 0,
         max: 100
     },
+    resistance: {
+        type: Number,
+        required: true,
+        min: 0,
+        max: 100
+    },
     power: {
         type: Number,
         required: true,
