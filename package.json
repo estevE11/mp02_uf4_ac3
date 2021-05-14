@@ -1,0 +1,27 @@
+{
+  "name": "mp02_uf4_ac3",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "dev": "nodemon app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/estevE11/mp02_uf4_ac3.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/estevE11/mp02_uf4_ac3/issues"
+  },
+  "homepage": "https://github.com/estevE11/mp02_uf4_ac3#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "express-session": "^1.17.1",
+    "mongoose": "^5.12.9",
+    "nodemon": "^2.0.7",
+    "pug": "^3.0.2"
+  }
+}
