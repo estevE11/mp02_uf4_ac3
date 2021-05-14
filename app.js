@@ -11,9 +11,7 @@ const PORT = 8000;
 app.use(express.json());
 app.use(express.urlencoded());
 
-app.get('/superheroes', (req, res) => {
-    res.send({ message: 'Le dicen la nena buena'});
-});
+app.use('/superheroes', require('./routes/superheroes'));
 
 app.listen(PORT, () => {
     console.log(`Listening to ${PORT}`);

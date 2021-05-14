@@ -8,7 +8,14 @@ router.get('/', (req, res) => {
 });
 
 router.post('/', (req, res) => {
-    res.send({message: 'callaputa'});
+    const superheroe = new SuperheroeModel(req.body);
+    superheroe.save((err, doc) => {
+        if (err) {
+            res.send({error: err});
+            return;
+        }
+        res.send({id: doc._id});
+    });
 });
 
 module.exports = router;

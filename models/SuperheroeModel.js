@@ -3,69 +3,72 @@ const mongoose = require('mongoose');
 const schema = new mongoose.Schema({
     name: {
         type: String,
-        required: true
+        required: true,
+        validate: {
+            validator: (v) => {
+                return v.length <= 20;
+            },
+            message: 'El nombre tiene que tener una longitud menor a 20'
+        }
     },
-    genere: {
+    gender: {
         type: String,
-        required: true
+        required: true,
+        validate: {
+            validator: (v) => {
+                return v == 'Masculino' || v == 'Femenino';
+            },
+            message: 'El genero debe ser "Masculino" o "Femenino"'
+        }
     },
     race: {
         type: String,
         required: false
     },
     height: {
-        type: String,
+        type: Number,
         required: true,
         min: 0
     },
     weight: {
-        type: String,
+        type: Number,
         required: true,
         min: 0
     },
     birthpalce: {
-        type: String,
+        type: Date,
         required: false
     },
     inteligence: {
-        type: String,
+        type: Number,
         required: true,
         min: 0,
         max: 100
     },
-    force: {
-        type: String,
+    strength: {
+        type: Number,
         required: true,
         min: 0,
         max: 100
     },
     speed: {
-        type: String,
+        type: Number,
         required: true,
         min: 0,
         max: 100
     },
     power: {
-        type: String,
+        type: Number,
         required: true,
         min: 0,
         max: 100
     },
     combat: {
-        type: String,
+        type: Number,
         required: true,
         min: 0,
         max: 100
     },
 });
-
-Schema.path('name').validate(function (v) {
-    return v.length <= 20;
-}, 'El nombre tiene que tener una longitud menor a 20');
-
-Schema.path('genere').validate(function (v) {
-    return v == 'Masculino' || v == 'Femenino';
-}, 'El genero debe ser "Masculino" o "Femenino"');
-
 
 module.exports = mongoose.model('superherois', schema);
