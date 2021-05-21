@@ -26,6 +26,9 @@ router.get('/:id', (req, res) => {
 router.put('/:id', (req, res) => {
     SuperheroeModel.findByIdAndUpdate(req.params.id, req.body, (err, data) => {
         if (err) return res.send({ error: err });
+        Object.keys(req.body).forEach(key => {
+            data[key] = req.body[key];
+        });
         res.send(data);
     });
 });
